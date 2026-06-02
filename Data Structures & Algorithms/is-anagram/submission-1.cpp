@@ -2,16 +2,15 @@ class Solution {
 public:
     bool isAnagram(string s, string t) {
         if(s.size()!=t.size()) return false;
-        unordered_map<char , int>hash;
+        int freq[26] = {0};
         for(auto ch:s){
-            hash[ch]++;
+            freq[ch-'a']++;
         }
         for(auto ch:t){
-            if(hash.find(ch)!=hash.end()){
-                hash[ch]--;
-                if(hash[ch]==0) hash.erase(ch);
-            }
-            else{
+            if(freq[ch-'a']>0){
+                freq[ch-'a']--;
+                
+            }else{
                 return false;
             }
         }

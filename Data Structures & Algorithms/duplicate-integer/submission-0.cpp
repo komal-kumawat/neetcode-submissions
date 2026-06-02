@@ -1,12 +1,12 @@
 class Solution {
 public:
     bool hasDuplicate(vector<int>& nums) {
+        sort(nums.begin() , nums.end());
         int n = nums.size();
-        unordered_set<int>hash;
-        for(auto num:nums){
-            if(hash.count(num)) return true;
-            hash.insert(num);
+        for(int i=0;i<n-1;i++){
+            if(nums[i]==nums[i+1]) return true;
         }
         return false;
+        
     }
 };

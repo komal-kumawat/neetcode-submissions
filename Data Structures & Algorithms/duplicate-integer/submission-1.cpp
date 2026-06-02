@@ -2,10 +2,10 @@ class Solution {
 public:
     bool hasDuplicate(vector<int>& nums) {
         int n = nums.size();
-        unordered_set<int>hash;
+        unordered_map<int , int>hash;
         for(auto num:nums){
-            if(hash.count(num)) return true;
-            hash.insert(num);
+            hash[num]++;
+            if(hash[num]==2){return true;}
         }
         return false;
     }
